@@ -1,0 +1,90 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Yazar Paneli</title>
+    <link rel="shortcut icon" type="image/png" href="~/Spike-Bootstrap-1.0.0/src/assets/images/logos/favicon.png" />
+    <link rel="stylesheet" href="~/Spike-Bootstrap-1.0.0/src/assets/css/styles.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</head>
+<body>
+
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+         data-sidebar-position="fixed" data-header-position="fixed">
+
+        <!-- Sidebar -->
+        <aside class="left-sidebar">
+            <div>
+                <div class="brand-logo">
+                    <a href="/Writer/Dashboard">
+                        <img src="~/Spike-Bootstrap-1.0.0/src/assets/images/logos/logo.svg" alt="logo" />
+                    </a>
+                </div>
+                <nav class="sidebar-nav scroll-sidebar">
+                    <ul id="sidebarnav">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/Writer/Dashboard">
+                                <iconify-icon icon="solar:chart-line-duotone"></iconify-icon>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/Writer/MyArtical">
+                                <iconify-icon icon="solar:sticker-smile-circle-2-line-duotone"></iconify-icon>
+                                <span>Makalelerim</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/Writer/Profile">
+                                <iconify-icon icon="solar:shield-user-line-duotone"></iconify-icon>
+                                <span>Profilim</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/Writer/ChangePassword">
+                                <iconify-icon icon="solar:password-outline"></iconify-icon>
+                                <span>Şifre Değiştir</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="body-wrapper">
+            <header class="app-header">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="navbar-collapse justify-content-end px-0">
+                        <ul class="navbar-nav flex-row ms-auto align-items-center">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#">
+                                    <img src="~/Spike-Bootstrap-1.0.0/src/assets/images/profile/user1.jpg" width="35" height="35" class="rounded-circle" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="container-fluid py-4">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/js/sidebarmenu.js"></script>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/js/app.min.js"></script>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/js/dashboard.js"></script>
+
+</body>
+</html>

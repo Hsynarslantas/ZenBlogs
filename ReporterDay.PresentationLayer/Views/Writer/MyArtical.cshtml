@@ -1,0 +1,33 @@
+﻿@model List<ReporterDay.EntityLayer.Entities.Artical>
+@{
+    ViewData["Title"] = "MyArtical";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+<h2>Makale Listeniz</h2>
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container">
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Makale Başlığı</th>
+            <th>Oluşturma Tarihi</th>
+            <th>Makale İçeriği</th>
+            <th>Makale Görseli</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ArticalId</td>
+                <td>@item.Title</td>
+                <td>@item.CreatedDate</td>
+                <td>@item.Content</td>
+                <td><img src="@item.CoverImageUrl" alt="Kapak Görseli" style="width:100px; height:auto;" /></td>
+                <td><a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Category/UpdateCategory/@item.CategoryId" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </table>
+</div>
+

@@ -1,0 +1,65 @@
+using Microsoft.AspNetCore.Identity;
+using ReporterDay.BusinessLayer.Abstract;
+using ReporterDay.BusinessLayer.Concrete;
+using ReporterDay.DataAccessLayer.Abstract;
+using ReporterDay.DataAccessLayer.Context;
+using ReporterDay.DataAccessLayer.EntityFramework;
+using ReporterDay.EntityLayer.Entities;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddScoped<ICategoryService,CategoryManager>();
+builder.Services.AddScoped<ICategoryDal,EfCagetoryDal>();
+
+builder.Services.AddScoped<ISliderService, SliderManager>();
+builder.Services.AddScoped<ISliderDal, EfSliderDal>();
+
+builder.Services.AddScoped<IArticalService, ArticalManager>();
+
+builder.Services.AddScoped<IArticalDal, EfArticalDal>();
+
+builder.Services.AddScoped<ITagService, TagManager>();
+builder.Services.AddScoped<ITagDal, EfTagDal>();
+builder.Services.AddScoped<ICommentService, CommentManager>();
+builder.Services.AddScoped<ICommentDal, EfCommentDal>();
+
+
+builder.Services.AddDbContext<ArticalContext>();
+builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<ArticalContext>();
+
+builder.Services.AddControllersWithViews();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "articleDetailSlug",
+    pattern: "Artical/ArticalDetail/{slug}",
+    defaults: new { controller = "Artical", action = "ArticalDetail" }
+);
+
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Artical}/{action=Index}/{id?}"
+);
+
+
+
+app.Run();

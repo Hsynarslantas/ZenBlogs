@@ -1,0 +1,20 @@
+﻿@model List<ReporterDay.EntityLayer.Entities.Artical>
+
+<div class="recent-posts-widget widget-item">
+    <h3 class="widget-title">Son Gönderiler</h3>
+
+    @foreach (var item in Model)
+    {
+        <div class="post-item d-flex mb-3">
+            <img src="@item.CoverImageUrl" alt="" style="width: 60px; height: 60px; object-fit: cover;" class="flex-shrink-0 me-3">
+            <div>
+                <h4 style="font-size: 14px;">
+                    <a href="/Artical/Detail/@item.Slug">@item.Title</a>
+                </h4>
+                <time datetime="@item.CreatedDate.ToString("yyyy-MM-dd")">
+                    @item.CreatedDate.ToString("dd MMM yyyy")
+                </time>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,54 @@
+﻿@model ReporterDay.PresentationLayer.Models.UserLoginViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Giriş Yap</title>
+    <link rel="stylesheet" href="~/Spike-Bootstrap-1.0.0/src/assets/css/styles.min.css" />
+    <link rel="shortcut icon" type="image/png" href="~/Spike-Bootstrap-1.0.0/src/assets/images/logos/favicon.png" />
+</head>
+<body>
+
+    <div class="page-wrapper d-flex align-items-center justify-content-center bg-light" style="height:100vh;">
+        <div class="auth-box border rounded p-4 shadow" style="width: 100%; max-width: 400px;">
+            <div class="text-center mb-4">
+                <img src="~/Spike-Bootstrap-1.0.0/src/assets/images/logos/logo.svg" width="150" alt="Logo" />
+                <h4 class="mt-3">Yazar Giriş Paneli</h4>
+            </div>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger">@ViewBag.Error</div>
+            }
+
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label">Kullanıcı Adı</label>
+                    <input asp-for="UserName" class="form-control" placeholder="Kullanıcı adınızı giriniz" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Şifre</label>
+                    <input asp-for="password" type="password" class="form-control" placeholder="Şifrenizi giriniz" />
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                </div>
+            </form>
+
+            <div class="text-center mt-3">
+                <small>Henüz hesabınız yok mu? <a href="/Register/CreateUser" class="text-primary">Kayıt Ol</a></small>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+</html>
+

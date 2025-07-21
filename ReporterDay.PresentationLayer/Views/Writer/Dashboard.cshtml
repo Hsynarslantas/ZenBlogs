@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<div class="container-fluid p-4">
+    <div class="row g-3">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white p-3 shadow-sm">
+                <h6>Toplam Makale</h6>
+                <h2>@ViewBag.TotalArticles</h2>
+            </div>
+        </div>
+
+        <!-- Toplam Yorum kartı kaldırıldı -->
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-8">
+            <div class="card shadow-sm p-3">
+                <h5>Haftalık Görüntülenme</h5>
+                <div id="chart"></div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card shadow-sm p-3">
+                <h5>Son Makaleler</h5>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Başlık</th>
+                            <th>Tarih</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var artical in (List<ReporterDay.EntityLayer.Entities.Artical>)ViewBag.RecentArticles)
+                        {
+                            <tr>
+                                <td>@artical.Title</td>
+                                <td>@artical.CreatedDate.ToString("dd.MM.yyyy")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Spike-Bootstrap-1.0.0/src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script>
+    var options = {
+        chart: { type: 'bar', height: 280 },
+        series: [{
+            name: 'Görüntülenme',
+            data: [30, 40, 45, 50, 49, 60, 70] // Örnek veriler
+        }],
+        xaxis: {
+            categories: ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz']
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+</script>

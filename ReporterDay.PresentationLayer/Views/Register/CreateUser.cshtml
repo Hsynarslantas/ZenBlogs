@@ -1,0 +1,52 @@
+﻿@model ReporterDay.PresentationLayer.Models.UserRegisterViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <title>Kayıt Ol</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Spike-Bootstrap-1.0.0/src/assets/css/styles.min.css" />
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center" style="height: 100vh;">
+
+    <div class="auth-box border rounded p-4 shadow" style="width: 100%; max-width: 500px;">
+        <div class="text-center mb-4">
+            <img src="~/Spike-Bootstrap-1.0.0/src/assets/images/logos/logo.svg" width="150" />
+            <h4 class="mt-3">Yazar Kayıt Paneli</h4>
+        </div>
+
+        <form method="post">
+            <div class="mb-3">
+                <label>Ad</label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label>Soyad</label>
+                <input asp-for="Surname" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label>Kullanıcı Adı</label>
+                <input asp-for="Username" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label>Email</label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label>Şifre</label>
+                <input asp-for="Password" type="password" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Kayıt Ol</button>
+        </form>
+
+        <div class="text-center mt-3">
+            <small>Zaten hesabın var mı? <a href="/Login/UserLogin" class="text-primary">Giriş Yap</a></small>
+        </div>
+    </div>
+
+</body>
+</html>
